@@ -1,0 +1,500 @@
+button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.ProseMirror,
+.tiptap {
+  padding: 15px 10px;
+  height: 100%;
+
+  :focus {
+    outline: none;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  h3 {
+    font-size: 1.75rem;
+  }
+  h4 {
+    font-size: 1.5rem;
+  }
+  h5 {
+    font-size: 1.25rem;
+  }
+  h6 {
+    font-size: 1rem;
+  }
+
+  p {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  ul,
+  ol {
+    margin: 3rem 0 1.5rem 1.5rem;
+  }
+
+  ul {
+    list-style: disc;
+  }
+  ol {
+    list-style: decimal;
+  }
+
+  blockquote {
+    border-left: 4px solid black;
+    padding-left: 1rem;
+    margin: 3rem 0 1.5rem 1.5rem;
+  }
+
+  pre {
+    background-color: #f5f5f5;
+    padding: 1rem;
+    border-radius: 0.25rem;
+  }
+
+  pre code {
+    background-color: transparent;
+    padding: 0;
+  }
+
+  a {
+    color: rgb(81, 83, 215);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+.generating-animation-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -6px;
+}
+
+.ball {
+  --size: 6.5px;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 11px;
+  margin: 0 3.5px;
+
+  animation: 2s bounce ease infinite;
+}
+
+.blue {
+  background-color: #4285f5;
+}
+
+.red {
+  background-color: #ea4436;
+  animation-delay: 0.25s;
+}
+
+.yellow {
+  background-color: #fbbd06;
+  animation-delay: 0.5s;
+}
+
+.green {
+  background-color: #34a952;
+  animation-delay: 0.75s;
+}
+
+@keyframes bounce {
+  50% {
+    transform: translateY(15px);
+  }
+}
+
+/* AI-Menu */
+.ai-menu-container {
+  position: absolute;
+  z-index: 50;
+  min-width: 600px;
+  max-width: 600px;
+  top: 10;
+
+  .ai-menu {
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-colored: 0 4px 6px -1px var(--shadow-color),
+      0 2px 4px -2px var(--shadow-color);
+    box-shadow: var(--ring-offset-shadow, 0 0 #0000),
+      var(--ring-shadow, 0 0 #0000), var(--shadow);
+
+    margin-bottom: 8px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+
+    .text-area {
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      padding: 20px;
+      background-color: rgb(248 250 252);
+
+      .selected-text-container {
+        display: flex;
+        align-items: flex-start;
+        width: 100%;
+
+        .selected-text {
+          position: relative;
+          width: 100%;
+          overflow: hidden;
+
+          p {
+            padding: 0;
+            margin: 0;
+          }
+        }
+      }
+
+      .generated-text-container {
+        display: flex;
+        align-items: start;
+        width: 100%;
+        margin-top: 24px;
+
+        .generated-text {
+          padding: 0;
+          margin: 0;
+        }
+      }
+
+      .error-text-container {
+        display: flex;
+        align-items: start;
+        width: 100%;
+        margin-top: 24px;
+
+        .error-text {
+          color: rgb(239 68 68);
+          width: 600px;
+          overflow-wrap: break-word;
+          white-space: normal;
+          padding: 8px;
+          margin: 0;
+          border-radius: 6px;
+          border-width: 2px;
+          background-color: rgb(254 226 226);
+          border-color: rgb(239 68 68);
+        }
+      }
+
+      .text-container-spacing > :not([hidden]) ~ :not([hidden]) {
+        --space-x-reverse: 0;
+        margin-right: calc(1.75rem /* 28px */ * var(--space-x-reverse));
+        margin-left: calc(
+          1.75rem /* 28px */ * calc(1 - var(--space-x-reverse))
+        );
+      }
+    }
+
+    .user-control-container {
+      background-color: rgb(255 255 255);
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      border-bottom-right-radius: 8px;
+      border-bottom-left-radius: 8px;
+
+      .show-api-type-button {
+        border-radius: 6px;
+        padding: 4px;
+
+        &:hover {
+          background-color: rgb(243 244 246);
+        }
+      }
+
+      .show-api-type-container {
+        position: absolute;
+        top: -144px;
+        background-color: rgb(255 255 255);
+        border-radius: 6px;
+
+        --shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+          0 4px 6px -4px rgb(0 0 0 / 0.1);
+        --shadow-colored: 0 10px 15px -3px var(--shadow-color),
+          0 4px 6px -4px var(--shadow-color);
+        box-shadow: var(--ring-offset-shadow, 0 0 #0000),
+          var(--ring-shadow, 0 0 #0000), var(--shadow);
+
+        .show-api-type-openAI {
+          padding-left: 28px;
+          padding-right: 28px;
+          padding-top: 16px;
+          padding-bottom: 16px;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+
+          &:hover {
+            background-color: rgb(243 244 246);
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+          }
+        }
+
+        .show-api-type-gemini {
+          padding-left: 28px;
+          padding-right: 28px;
+          padding-top: 16px;
+          padding-bottom: 16px;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+
+          &:hover {
+            background-color: rgb(243 244 246);
+            border-bottom-left-radius: 6px;
+            border-bottom-right-radius: 6px;
+          }
+        }
+      }
+
+      .prompt-input {
+        background-color: rgb(255 255 255);
+        border-width: 0px;
+        width: 100%;
+
+        &:focus {
+          outline: 2px solid transparent !important;
+          outline-offset: 2px !important;
+          --ring-offset-shadow: var(--ring-inset) 0 0 0 var(--ring-offset-width)
+            var(--ring-offset-color) !important;
+          --ring-shadow: var(--ring-inset) 0 0 0
+            calc(0px + var(--ring-offset-width)) var(--ring-color) !important;
+          box-shadow: var(--ring-offset-shadow), var(--ring-shadow),
+            var(--shadow, 0 0 #0000) !important;
+        }
+      }
+
+      .generating-animation-container {
+        display: flex;
+        align-items: center;
+      }
+
+      .generating-animation-container-spacing
+        > :not([hidden])
+        ~ :not([hidden]) {
+        --space-x-reverse: 0;
+        margin-right: calc(1.25rem /* 16px */ * var(--space-x-reverse));
+        margin-left: calc(
+          1.25rem /* 16px */ * calc(1 - var(--space-x-reverse))
+        );
+      }
+    }
+
+    .user-control-container-spacing > :not([hidden]) ~ :not([hidden]) {
+      --space-x-reverse: 0;
+      margin-right: calc(1.25rem /* 20px */ * var(--space-x-reverse));
+      margin-left: calc(1.25rem /* 20px */ * calc(1 - var(--space-x-reverse)));
+    }
+  }
+
+  .after-generation-options {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 8px;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-colored: 0 4px 6px -1px var(--shadow-color),
+      0 2px 4px -2px var(--shadow-color);
+    box-shadow: var(--ring-offset-shadow, 0 0 #0000),
+      var(--ring-shadow, 0 0 #0000), var(--shadow);
+    padding: 8px;
+    width: fit-content;
+    min-width: 320px;
+
+    .option {
+      padding-left: 16px;
+      padding-right: 16px;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      border-radius: 6px;
+      &:hover {
+        background-color: rgb(243 244 246);
+      }
+    }
+  }
+}
+
+/* Modal */
+.modal-dialog {
+  z-index: 99999;
+  position: fixed;
+  inset: 0px;
+  display: flex;
+  align-items: center;
+  overflow-y: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+
+  .transition-child-cover {
+    position: absolute;
+    inset: 0px;
+    background-color: rgb(107 114 128 / 0.75);
+  }
+
+  .dialog-panel-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    z-index: 99999;
+
+    .dialog-panel {
+      margin-bottom: 24px;
+    }
+  }
+}
+
+/* AI-Modal */
+.ai-modal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  color: #000;
+  padding: 24px;
+  border-radius: 8px;
+  --shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-colored: 0 10px 15px -3px var(--shadow-color),
+    0 4px 6px -4px var(--shadow-color);
+  box-shadow: var(--ring-offset-shadow, 0 0 #0000),
+    var(--ring-shadow, 0 0 #0000), var(--shadow);
+
+  .ai-modal-heading {
+    width: 300px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 600;
+  }
+
+  .options-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .option {
+      padding-left: 16px;
+      padding-right: 16px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      border-width: 2px;
+      border-color: rgb(0 0 0);
+      border-radius: 8px;
+
+      &:hover {
+        background-color: rgb(243 244 246);
+      }
+    }
+  }
+
+  .options-container-spacing > :not([hidden]) ~ :not([hidden]) {
+    --space-y-reverse: 0;
+    margin-top: calc(0.5rem /* 8px */ * calc(1 - var(--space-y-reverse)));
+    margin-bottom: calc(0.5rem /* 8px */ * var(--space-y-reverse));
+  }
+}
+
+.ai-modal-container-spacing > :not([hidden]) ~ :not([hidden]) {
+  --space-y-reverse: 0;
+  margin-top: calc(1rem /* 16px */ * calc(1 - var(--space-y-reverse)));
+  margin-bottom: calc(1rem /* 16px */ * var(--space-y-reverse));
+}
+
+/* PredefinedPromptsBox */
+.predefinedPrompts-container {
+  background-color: #fff;
+  border-radius: 8px;
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-colored: 0 4px 6px -1px var(--shadow-color),
+    0 2px 4px -2px var(--shadow-color);
+  box-shadow: var(--ring-offset-shadow, 0 0 #0000),
+    var(--ring-shadow, 0 0 #0000), var(--shadow);
+  padding: 16px;
+  width: fit-content;
+  min-width: 320px;
+
+  .predefinedPrompts-button-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 6px;
+
+    .predefinedPrompts-button {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 6px;
+      padding-left: 8px;
+      padding-right: 8px;
+      padding-top: 12px;
+      padding-bottom: 12px;
+
+      &:hover {
+        background-color: rgb(243 244 246);
+      }
+    }
+
+    .predefinedPrompts-options {
+      padding: 8px;
+      position: absolute;
+      border-radius: 8px;
+      left: 330px;
+      z-index: 10;
+      background-color: #fff;
+      min-width: 160px;
+      --shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+        0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --shadow-colored: 0 10px 15px -3px var(--shadow-color),
+        0 4px 6px -4px var(--shadow-color);
+      box-shadow: var(--ring-offset-shadow, 0 0 #0000),
+        var(--ring-shadow, 0 0 #0000), var(--shadow);
+
+      .option {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        border-radius: 6px;
+
+        &:hover {
+          background-color: rgb(243 244 246);
+        }
+      }
+    }
+  }
+}
