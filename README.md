@@ -138,7 +138,7 @@ interface Prompt {
 - `OpenAI` (optional): Configuration for OpenAI integration.
 
   - `OpenAI_api_key`: Your OpenAI API key.
-  - `Model`: The OpenAI model to use (e.g., 'gpt-4-mini').
+  - `Model`: The OpenAI model to use (e.g., 'gpt-4o-mini').
 
 - `Gemini` (optional): Configuration for Gemini integration.
 

@@ -1,6 +1,6 @@
 {
   "name": "tiptap-bubble-ai-react",
-  "version": "1.0.8",
+  "version": "1.0.10",
   "description": "A React component for AI-powered text editing in TipTap using bubble menu.",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
