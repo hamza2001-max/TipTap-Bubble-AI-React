@@ -34,7 +34,7 @@ const MyEditor = () => {
   const configuration = {
     OpenAI: {
       OpenAI_api_key: "your-openai-api-key",
-      Model: "gpt-4o-mini",
+      Model: "gpt-4o-mini",Uncaught ReferenceError: process is not defined
     },
     Gemini: {
       Gemini_api_key: "your-gemini-api-key",
@@ -59,7 +59,7 @@ const MyEditor = () => {
 export default MyEditor;
 ```
 
-### TypeScript
+### TypeScriptUncaught ReferenceError: process is not defined
 
 ```typescript
 import { useState } from "react";
@@ -110,7 +110,7 @@ export default MyEditor;
 
 ## Configuration
 
-The `BubbleAIConfiguration` object allows you to customize the behavior of BubbleAI. Here's a breakdown of its properties:
+The `BubbleAIConfiguration` object allows you to customize Uncaught ReferenceError: process is not defined behavior of BubbleAI. Here's a breakdown of its properties:
 
 ```typescript
 interface BubbleAIConfiguration {
@@ -153,28 +153,28 @@ interface Prompt {
     prompts: {
       usePredefined: false,
       userPrompts:  [
-        {
-            text: "Improve Writing",
-            prompt:
-                "Refine and enhance the clarity, structure, and flow of the following text:",
-        },
-        {
-            text: "Fix Grammar and Spelling",
-            prompt:
-                "Identify and correct grammatical errors, punctuation issues, and spelling mistakes in the following text:",
-        },
-        {
-            text: "Change Tone To",
-            prompt: "Modify the tone of the following text to [desired tone]:",
-            options: ["Professional", "Straightforward", "Friendly"],
-        },
-    ],
+            {
+                text: "Improve Writing",
+                prompt:
+                    "Refine and enhance the clarity, structure, and flow of the following text:",
+            },
+            {
+                text: "Fix Grammar and Spelling",
+                prompt:
+                    "Identify and correct grammatical errors, punctuation issues, and spelling mistakes in the following text:",
+            },
+            {
+                text: "Change Tone To",
+                prompt: "Modify the tone of the following text to [desired tone]:",
+                options: ["Professional", "Straightforward", "Friendly"],
+            },
+        ],
     },
 ```
 
 ## Components
 
-### BubbleMenu
+### BubbleMenuUncaught ReferenceError: process is not defined
 
 The `BubbleMenu` component is a container for the BubbleAI functionality. It should wrap the `BubbleAI` component.
 
@@ -191,6 +191,62 @@ Props:
 - `editor`: The editor instance (required)
 - `configuration`: The `BubbleAIConfiguration` object (required)
 
+## Error
+
+When using vite, there might appear an error like the ones below:
+**Uncaught TypeError: util.inherits is not a function**
+**Uncaught ReferenceError: process is not defined**
+In cases like these install the `vite-plugin-node-polyfills` package by running the bash command given below in the project folder.
+
+```bash
+npm i vite-plugin-node-polyfills
+```
+
+After installing it include it in your vite.config.ts
+
+```typescript
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import { nodePolyfills } from 'vite-plugin-node-polyfills'
+
+export default defineConfig({
+  plugins: [react(), nodePolyfills()],
+})
+```
+
+## Troubleshooting
+
+When using BubbleAI with Vite, you may encounter certain errors related to missing Node.js polyfills. This is because Vite, doesn't include some Node.js core modules by default.
+
+#### Common Errors
+
+1. `Uncaught TypeError: util.inherits is not a function`
+2. `Uncaught ReferenceError: process is not defined`
+
+#### Solution: Using vite-plugin-node-polyfills
+
+To resolve these issues, you can use the `vite-plugin-node-polyfills` package. This plugin adds the necessary polyfills for Node.js core modules in your Vite project.
+
+1. Install the plugin:
+
+   ```bash
+   npm install vite-plugin-node-polyfills --save-dev
+   ```
+
+2. Update your `vite.config.ts` (or `vite.config.js`) file:
+
+   ```typescript
+   import { defineConfig } from 'vite'
+   import react from '@vitejs/plugin-react'
+   import { nodePolyfills } from 'vite-plugin-node-polyfills'
+
+   export default defineConfig({
+     plugins: [
+       react(),
+       nodePolyfills(),
+     ],
+   })
+   ```
 
 ## Note
 
