@@ -1,0 +1,174 @@
+# BubbleAI
+
+BubbleAI is a powerful and flexible AI-powered text editing tool that can be easily integrated into your React applications. It supports multiple AI providers and allows for custom prompts to enhance your text editing experience.
+
+## Installation
+
+```bash
+npm i tiptap-bubble-ai-react
+```
+
+## Usage
+
+### JavaScript
+
+```javascript
+import { useState } from "react";
+import StarterKit from "@tiptap/starter-kit";
+import { BubbleMenu, EditorContent, useEditor } from "@tiptap/react";
+import { BubbleAI } from "tiptap-bubble-ai-react";
+import "tiptap-bubble-ai-react/dist/index.css";
+
+const MyEditor = () => {
+  const [content, setContent] = useState(
+    `<p>Artificial Intelligence (AI) is transforming industries at a rapid pace. From healthcare to finance, AI is being used to automate processes and improve efficiency. One of the key areas where AI is making an impact is in data analysis.</p>`);
+
+  const editor = useEditor({
+    extensions: [StarterKit],
+    content: content,
+    onUpdate: ({ editor }: { editor: Editor }) => {
+      setContent(editor.getHTML());
+    },
+  });
+
+  const configuration = {
+    OpenAI: {
+      OpenAI_api_key: "your-openai-api-key",
+      Model: "gpt-4o-mini",
+    },
+    Gemini: {
+      Gemini_api_key: "your-gemini-api-key",
+      Model: "gemini-1.5-flash",
+    },
+    prompts: {
+      usePredefined: true,
+      userPrompts: null
+    },
+  };
+
+  return (
+    <>
+        <EditorContent editor={editor} />
+        <BubbleMenu editor={editor}>
+            <BubbleAI editor={editor} configuration={configuration} />
+        </BubbleMenu>
+    </>
+  );
+};
+
+export default MyEditor;
+```
+
+### TypeScript
+
+```typescript
+import { useState } from "react";
+import StarterKit from "@tiptap/starter-kit";
+import { BubbleMenu, EditorContent, useEditor } from "@tiptap/react";
+import { BubbleAI, BubbleAIConfiguration } from "tiptap-bubble-ai-react";
+import "tiptap-bubble-ai-react/dist/index.css";
+
+const MyEditor = () => {
+  const [content, setContent] = useState<string>(
+    `<p>Artificial Intelligence (AI) is transforming industries at a rapid pace. From healthcare to finance, AI is being used to automate processes and improve efficiency. One of the key areas where AI is making an impact is in data analysis.</p>`);
+
+  const editor = useEditor({
+    extensions: [StarterKit],
+    content: content,
+    onUpdate: ({ editor }: { editor: Editor }) => {
+      setContent(editor.getHTML());
+    },
+  });
+
+  const configuration: BubbleAIConfiguration = {
+    OpenAI: {
+      OpenAI_api_key: "your-openai-api-key",
+      Model: "gpt-4o-mini",
+    },
+    Gemini: {
+      Gemini_api_key: "your-gemini-api-key",
+      Model: "gemini-1.5-flash",
+    },
+    prompts: {
+      usePredefined: true,
+      userPrompts: null,
+    },
+  };
+
+  return (
+    <>
+        <EditorContent editor={editor} />
+        <BubbleMenu editor={editor}>
+            <BubbleAI editor={editor} configuration={configuration} />
+        </BubbleMenu>
+    </>
+  );
+};
+
+export default MyEditor;
+```
+
+## Configuration
+
+The `BubbleAIConfiguration` object allows you to customize the behavior of BubbleAI. Here's a breakdown of its properties:
+
+```typescript
+interface BubbleAIConfiguration {
+  OpenAI?: {
+    OpenAI_api_key: string;
+    Model: string;
+  };
+  Gemini?: {
+    Gemini_api_key: string;
+    Model: string;
+  };
+  prompts: {
+    usePredefined: boolean;
+    userPrompts: Prompt[] | null;
+  };
+}
+
+interface Prompt {
+  text: string;
+  prompt: string;
+  options?: string[];
+}
+```
+
+- `OpenAI` (optional): Configuration for OpenAI integration.
+
+  - `OpenAI_api_key`: Your OpenAI API key.
+  - `Model`: The OpenAI model to use (e.g., 'gpt-4-mini').
+
+- `Gemini` (optional): Configuration for Gemini integration.
+
+  - `Gemini_api_key`: Your Gemini API key.
+  - `Model`: The Gemini model to use (e.g., 'gemini-1.5-flash').
+
+- `prompts`: Configuration for AI prompts.
+  - `usePredefined`: Set to `true` to use predefined prompts, `false` to use custom prompts.
+  - `userPrompts`: An array of custom prompts (only used when `usePredefined` is `false`).
+
+## Components
+
+### BubbleMenu
+
+The `BubbleMenu` component is a container for the BubbleAI functionality. It should wrap the `BubbleAI` component.
+
+Props:
+
+- `editor`: The editor instance (required)
+
+### BubbleAI
+
+The `BubbleAI` component provides the AI-powered text editing functionality.
+
+Props:
+
+- `editor`: The editor instance (required)
+- `configuration`: The `BubbleAIConfiguration` object (required)
+
+
+## Note
+
+BubbleAI provides a powerful way to enhance your text editing experience with AI capabilities. By following this documentation, you should be able to integrate BubbleAI into your React applications.
