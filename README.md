@@ -34,7 +34,7 @@ const MyEditor = () => {
   const configuration = {
     OpenAI: {
       OpenAI_api_key: "your-openai-api-key",
-      Model: "gpt-4o-mini",Uncaught ReferenceError: process is not defined
+      Model: "gpt-4o-mini",
     },
     Gemini: {
       Gemini_api_key: "your-gemini-api-key",
@@ -110,7 +110,7 @@ export default MyEditor;
 
 ## Configuration
 
-The `BubbleAIConfiguration` object allows you to customize Uncaught ReferenceError: process is not defined behavior of BubbleAI. Here's a breakdown of its properties:
+The `BubbleAIConfiguration` object allows you to customize behavior of BubbleAI. Here's a breakdown of its properties:
 
 ```typescript
 interface BubbleAIConfiguration {
