@@ -59,7 +59,7 @@ const MyEditor = () => {
 export default MyEditor;
 ```
 
-### TypeScriptUncaught ReferenceError: process is not defined
+### TypeScript
 
 ```typescript
 import { useState } from "react";
@@ -174,7 +174,7 @@ interface Prompt {
 
 ## Components
 
-### BubbleMenuUncaught ReferenceError: process is not defined
+### BubbleMenu
 
 The `BubbleMenu` component is a container for the BubbleAI functionality. It should wrap the `BubbleAI` component.
 
@@ -190,29 +190,6 @@ Props:
 
 - `editor`: The editor instance (required)
 - `configuration`: The `BubbleAIConfiguration` object (required)
-
-## Error
-
-When using vite, there might appear an error like the ones below:
-**Uncaught TypeError: util.inherits is not a function**
-**Uncaught ReferenceError: process is not defined**
-In cases like these install the `vite-plugin-node-polyfills` package by running the bash command given below in the project folder.
-
-```bash
-npm i vite-plugin-node-polyfills
-```
-
-After installing it include it in your vite.config.ts
-
-```typescript
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import { nodePolyfills } from 'vite-plugin-node-polyfills'
-
-export default defineConfig({
-  plugins: [react(), nodePolyfills()],
-})
-```
 
 ## Troubleshooting
 
