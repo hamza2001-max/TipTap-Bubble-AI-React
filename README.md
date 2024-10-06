@@ -147,7 +147,30 @@ interface Prompt {
 
 - `prompts`: Configuration for AI prompts.
   - `usePredefined`: Set to `true` to use predefined prompts, `false` to use custom prompts.
-  - `userPrompts`: An array of custom prompts (only used when `usePredefined` is `false`).
+  - `userPrompts`: An array of custom prompts (only used when `usePredefined` is `false`). An Example of it can be seen below for reference.
+
+```typescript
+    prompts: {
+      usePredefined: false,
+      userPrompts:  [
+        {
+            text: "Improve Writing",
+            prompt:
+                "Refine and enhance the clarity, structure, and flow of the following text:",
+        },
+        {
+            text: "Fix Grammar and Spelling",
+            prompt:
+                "Identify and correct grammatical errors, punctuation issues, and spelling mistakes in the following text:",
+        },
+        {
+            text: "Change Tone To",
+            prompt: "Modify the tone of the following text to [desired tone]:",
+            options: ["Professional", "Straightforward", "Friendly"],
+        },
+    ],
+    },
+```
 
 ## Components
 
