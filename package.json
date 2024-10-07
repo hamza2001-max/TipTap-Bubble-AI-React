@@ -9,6 +9,10 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hamza2001-max/TipTap-Bubble-AI-React.git"
+  },
   "scripts": {
     "build": "tsc && rollup -c",
     "prepublishOnly": "npm run build"
@@ -48,6 +52,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.1.9",
+    "@rollup/pluginutils": "^5.1.2",
     "axios": "^0.27.2"
   },
   "author": "Hamza Ali",
