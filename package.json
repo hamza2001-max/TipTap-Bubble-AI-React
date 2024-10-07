@@ -1,10 +1,11 @@
 {
   "name": "tiptap-bubble-ai-react",
-  "version": "1.0.10",
+  "version": "1.1.3",
   "description": "A React component for AI-powered text editing in TipTap using bubble menu.",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
+  "style": "dist/index.css",
   "files": [
     "dist"
   ],
@@ -12,6 +13,12 @@
     "build": "tsc && rollup -c",
     "prepublishOnly": "npm run build"
   },
+  "keywords": [
+    "tiptap",
+    "text manipulation",
+    "BubbleMenu",
+    "AI"
+  ],
   "peerDependencies": {
     "@google/generative-ai": "^0.1.0",
     "@tiptap/react": "^2.0.0",
@@ -19,17 +26,30 @@
     "react-dom": "^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.25.7",
+    "@babel/preset-env": "^7.25.7",
+    "@babel/preset-react": "^7.25.7",
+    "@babel/preset-typescript": "^7.25.7",
+    "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^22.0.0",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@rollup/plugin-typescript": "^8.5.0",
+    "@types/estree": "^1.0.5",
     "@types/react": "^18.0.0",
+    "@types/rollup-plugin-peer-deps-external": "^2.2.5",
+    "path": "^0.12.7",
+    "postcss": "^8.4.47",
     "rollup": "^2.75.6",
+    "rollup-plugin-css-only": "^4.5.2",
     "rollup-plugin-dts": "^4.2.2",
+    "rollup-plugin-postcss": "^4.0.2",
     "typescript": "^4.7.3"
   },
   "dependencies": {
     "@headlessui/react": "^2.1.9",
     "axios": "^0.27.2"
-  }
+  },
+  "author": "Hamza Ali",
+  "license": "MIT"
 }

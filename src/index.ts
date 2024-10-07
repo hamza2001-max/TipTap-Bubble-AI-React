@@ -1,2 +1,5 @@
-export { default as BubbleAI } from './components/BubbleAI';
-export type { BubbleAIConfiguration } from './types'; 
+import "./App.css"
+import BubbleAI  from './components/BubbleAI';
+import { BubbleAIConfiguration } from './types';
+
+export { BubbleAI, BubbleAIConfiguration };
